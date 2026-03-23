@@ -9,6 +9,27 @@ A custom integration for Home Assistant that tracks mail and circulars received 
 * **Ecosystem Ready:** Uses standard `Mail and Packages` data structures (the `packages` attribute) for maximum compatibility with community cards.
 * **Fully Localized:** Support for English and French.
 
+## ⚠️ Prerequisite / Prérequis
+Before installing this integration, you **must** have the "My Mail" (Mon Courrier) service activated on your Canada Post account.
+1. Download the official Canada Post app.
+2. Sign up or log in.
+3. Activate the **"My Mail"** service (you will receive a verification code by physical mail to confirm your address).
+*Note: If you don't see your mail in the official app, it won't appear in Home Assistant.*
+
+---
+
+Avant d'installer cette intégration, vous **devez** avoir activé le service "Mon Courrier" sur votre compte Postes Canada.
+1. Téléchargez l'application officielle de Postes Canada.
+2. Connectez-vous ou créez un compte.
+3. Activez le service **"Mon Courrier"** (vous recevrez un code de vérification par la poste pour confirmer votre adresse).
+*Note : Si vous ne voyez pas votre courrier dans l'application officielle, il n'apparaîtra pas dans Home Assistant.*
+
+## 🔢 Entities Created
+This integration creates three main sensors:
+- `sensor.canada_post_delivered`: Detailed list of received mail.
+- `sensor.canada_post_transit`: Count of mail currently on its way.
+- `sensor.mail_updated`: A compatibility sensor matching the "Mail and Packages" standard.
+
 ## 🚀 Installation
 
 ### Via HACS (Recommended)
