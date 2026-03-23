@@ -34,8 +34,10 @@ class CanadaPostConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                         data={
                             "username": user_input["username"],
                             "password": user_input["password"],
-                            "topic_id": topic_id,
-                            "include_ads": user_input.get(CONF_INCLUDE_ADS, True)
+                            "topic_id": topic_id
+                        },
+                        options={
+                            CONF_INCLUDE_ADS: user_input.get(CONF_INCLUDE_ADS, True)
                         }
                     )
                 
@@ -62,7 +64,7 @@ class CanadaPostConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
 class CanadaPostOptionsFlowHandler(config_entries.OptionsFlow):
     def __init__(self, config_entry):
-        super().__init__() 
+        super().__init__(config_entry)
 
     async def async_step_init(self, user_input=None):
         if user_input is not None:
