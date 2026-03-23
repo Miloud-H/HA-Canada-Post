@@ -1,0 +1,9 @@
+{
+  "domain": "canadapost",
+  "name": "Postes Canada MyMail",
+  "codeowners": ["@MiloudH"],
+  "config_flow": true,
+  "documentation": "https://github.com/test",
+  "iot_class": "cloud_polling",
+  "version": "1.0.0"
+}
