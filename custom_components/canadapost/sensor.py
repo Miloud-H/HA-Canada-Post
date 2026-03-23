@@ -6,6 +6,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN, CONF_INCLUDE_ADS
+from .coordinator import CanadaPostUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -28,34 +29,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
 async def update_listener(hass, entry):
     await hass.config_entries.async_reload(entry.entry_id)
-
-class CanadaPostUpdateCoordinator(DataUpdateCoordinator):
-    def __init__(self, hass, api, topic_id):
-        super().__init__(
-            hass,
-            _LOGGER,
-            name=DOMAIN,
-            update_interval=SCAN_INTERVAL,
-        )
-
-        self.api = api
-        self.topic_id = topic_id
-
-    async def _async_update_data(self):
-        try:
-            tokens = await self.api.get_tokens()
-            acc = tokens.get("access_token")
-            idt = tokens.get("id_token")
-
-            if not acc or not idt:
-                raise UpdateFailed("Missing token")
-
-            full_token = f"{acc}.{idt}"
-            return await self.api.get_mail(full_token, self.topic_id)
-
-        except Exception as err:
-            _LOGGER.error("Error in coordinator : %s", err)
-            raise UpdateFailed(f"Communication error: {err}")
 
 class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
     _attr_has_entity_name = True

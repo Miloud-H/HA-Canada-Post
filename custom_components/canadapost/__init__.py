@@ -5,6 +5,7 @@ from homeassistant.exceptions import ConfigEntryNotReady
 
 from .api import CanadaPostAPI
 from .const import DOMAIN
+from .coordinator import CanadaPostUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 PLATFORMS = ["sensor"]
@@ -15,8 +16,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     topic_id = entry.data.get("topic_id")
 
     api = CanadaPostAPI(hass, username, password)
-
-    from .sensor import CanadaPostUpdateCoordinator
     
     coordinator = CanadaPostUpdateCoordinator(hass, api, topic_id)
 
