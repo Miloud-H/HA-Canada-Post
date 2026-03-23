@@ -8,17 +8,13 @@ from .const import DOMAIN, CONF_INCLUDE_ADS
 _LOGGER = logging.getLogger(__name__)
 
 class CanadaPostConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Interface utilisateur pour la configuration de Postes Canada."""
-
     VERSION = 1
 
     async def async_step_user(self, user_input=None):
-        """Formulaire de connexion initial."""
         errors = {}
 
         if user_input is not None:
             try:
-                # On instancie la classe API avec les infos saisies
                 api = CanadaPostAPI(
                     self.hass, 
                     user_input["username"], 
@@ -45,7 +41,7 @@ class CanadaPostConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 errors["base"] = "cannot_discover_id"
 
             except Exception as err:
-                _LOGGER.error("Erreur d'authentification Postes Canada : %s", err)
+                _LOGGER.error("Error while login : %s", err)
                 errors["base"] = "auth_failed"
 
         return self.async_show_form(
@@ -61,18 +57,13 @@ class CanadaPostConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     @staticmethod
     @callback
     def async_get_options_flow(config_entry):
-        """Lien vers le gestionnaire d'options (Bouton Configurer)."""
         return CanadaPostOptionsFlowHandler(config_entry)
 
 class CanadaPostOptionsFlowHandler(config_entries.OptionsFlow):
-    """Gestion du changement d'avis de l'utilisateur."""
-
     def __init__(self, config_entry):
-        """Initialise le handler d'options."""
         super().__init__() 
 
     async def async_step_init(self, user_input=None):
-        """Formulaire qui s'affiche quand on clique sur 'Configurer'."""
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 

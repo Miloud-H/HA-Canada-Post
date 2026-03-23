@@ -1,0 +1,42 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Connexion Postes Canada",
+                "description": "Entrez vos identifiants de l'application mobile Postes Canada (Mon Courrier).",
+                "data": {
+                    "username": "Nom d'utilisateur",
+                    "password": "Mot de passe",
+                    "include_ads": "Inclure les circulaires (Raddar, Metro, etc.)"
+                }
+            }
+        },
+        "error": {
+            "auth_failed": "Échec de l'authentification. Vérifiez vos identifiants.",
+            "cannot_discover_id": "Impossible de récupérer votre ID de suivi unique, Mon Courrier est il actif?"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Options de Postes Canada",
+                "data": {
+                    "include_ads": "Afficher les publicités dans les capteurs"
+                }
+            }
+        }
+    },
+    "entity": {
+        "sensor": {
+            "transit": { 
+                "name": "Postes Canada (En chemin)" 
+            },
+            "delivered": {
+                "name": "Postes Canada (Livré)" 
+            },
+            "mail_updated": {
+                "name": "Courrier mis a jour"
+            }
+        }
+    }
+}
