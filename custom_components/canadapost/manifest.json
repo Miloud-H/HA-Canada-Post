@@ -4,6 +4,7 @@
   "version": "1.0.1",
   "documentation": "https://github.com/Miloud-H/HA-Canada-Post",
   "issue_tracker": "https://github.com/Miloud-H/HA-Canada-Post/issues",
+  "license": "MIT",
   "codeowners": ["@Miloud-H"],
   "config_flow": true,
   "iot_class": "cloud_polling",

@@ -1,4 +1,6 @@
 # 📬 Canada Post - My Mail for Home Assistant
+![GitHub License](https://img.shields.io/github/license/Miloud-H/HA-Canada-Post)
+![HACS Badge](https://img.shields.io/badge/HACS-Custom-orange.svg)
 
 A custom integration for Home Assistant that tracks mail and circulars received via the Canada Post **"My Mail"** (Mon Courrier) service. Unlike integrations based on email scraping, this integration uses the official mobile API to extract real sender logos, delivery dates, and specific mailpiece details.
 
@@ -73,3 +75,6 @@ While this is a standalone integration, it maps its attributes to match the popu
 
 * **Main Attribute**: packages
 * **Sub-attributes**: sender, image_url, estimated_delivery, tracking_description.
+
+## ⚖️ License
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
