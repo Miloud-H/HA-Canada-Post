@@ -1,14 +1,14 @@
 import logging
 import voluptuous as vol
-from homeassistant import config_entries
 from homeassistant.core import callback
+from homeassistant.config_entries import ConfigFlow, OptionsFlow, ConfigEntry
 
 from .api import CanadaPostAPI
 from .const import DOMAIN, CONF_INCLUDE_ADS
 
 _LOGGER = logging.getLogger(__name__)
 
-class CanadaPostConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class CanadaPostConfigFlow(ConfigFlow, domain=DOMAIN):
     VERSION = 1
 
     async def async_step_user(self, user_input=None):
@@ -59,13 +59,10 @@ class CanadaPostConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     
     @staticmethod
     @callback
-    def async_get_options_flow(config_entry):
-        return CanadaPostOptionsFlowHandler(config_entry)
+    def async_get_options_flow(_config_entry: ConfigEntry):
+        return CanadaPostOptionsFlowHandler()
 
-class CanadaPostOptionsFlowHandler(config_entries.OptionsFlow):
-    def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
-        super().__init__(config_entry)
-
+class CanadaPostOptionsFlowHandler(OptionsFlow):
     async def async_step_init(self, user_input=None):
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
