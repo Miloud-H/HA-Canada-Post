@@ -123,6 +123,8 @@ class CanadaPostUpdatedSensor(CanadaPostMailSensor):
 
     def __init__(self, coordinator, topic_id):
         super().__init__(coordinator, topic_id, "delivered")
+        
+        self._attr_translation_key = "mail_updated"
         self._attr_unique_id = f"canadapost_mail_updated_{topic_id}"
 
     @property
