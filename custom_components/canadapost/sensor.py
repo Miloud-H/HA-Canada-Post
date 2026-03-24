@@ -127,7 +127,7 @@ class CanadaPostUpdatedSensor(CanadaPostMailSensor):
 
     @property
     def state(self):
-        return self.coordinator.data.get("delivered_count", 0)
+        return len(self._process_mail())
 
     @property
     def extra_state_attributes(self):
