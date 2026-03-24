@@ -29,10 +29,10 @@
     "entity": {
         "sensor": {
             "transit": {
-                "name": "Canada Post (In transit)"
+                "name": "In transit"
             },
             "delivered": {
-                "name": "Canada Post (Delivered)"
+                "name": "Delivered"
             },
             "mail_updated": {
                 "name": "Mail Updated"

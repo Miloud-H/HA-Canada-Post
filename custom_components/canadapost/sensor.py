@@ -39,6 +39,8 @@ class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
         self._topic_id = topic_id
         self._type = sensor_type
 
+        self._attr_name = None
+
         self._attr_translation_key = sensor_type        
         self._attr_unique_id = f"cp_mymail_{topic_id}_{sensor_type}"
 
@@ -129,9 +131,10 @@ class CanadaPostUpdatedSensor(CanadaPostMailSensor):
 
     def __init__(self, coordinator, topic_id):
         super().__init__(coordinator, topic_id, "delivered")
-
+        
+        self._attr_name = None
         self._attr_translation_key = "mail_updated"
-        self._attr_unique_id = f"canadapost_mail_updated_{topic_id}"
+        self._attr_unique_id = f"{topic_id}_mail_updated"
 
     @property
     def state(self):

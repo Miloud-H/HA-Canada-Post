@@ -27,8 +27,8 @@ Avant d'installer cette intégration, vous **devez** avoir activé le service "M
 ## 🔢 Entities Created
 This integration creates three main sensors:
 - `sensor.canada_post_delivered`: Detailed list of received mail.
-- `sensor.canada_post_transit`: Count of mail currently on its way.
-- `sensor.mail_updated`: A compatibility sensor matching the "Mail and Packages" standard.
+- `sensor.canada_post_in_transit`: Count of mail currently on its way.
+- `sensor.canada_post_mail_updated`: A compatibility sensor matching the "Mail and Packages" standard.
 
 ## 🚀 Installation
 

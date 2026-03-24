@@ -13,7 +13,7 @@
         },
         "error": {
             "auth_failed": "Échec de l'authentification. Vérifiez vos identifiants.",
-            "cannot_discover_id": "Impossible de récupérer votre ID de suivi unique, Mon Courrier est il actif?"
+            "cannot_discover_id": "Échec de récupération de l'ID unique. Le service 'Mon Courrier' est-il activé?"
         }
     },
     "options": {
@@ -29,13 +29,13 @@
     "entity": {
         "sensor": {
             "transit": { 
-                "name": "Postes Canada (En chemin)" 
+                "name": "En chemin" 
             },
             "delivered": {
-                "name": "Postes Canada (Livré)" 
+                "name": "Livré" 
             },
             "mail_updated": {
-                "name": "Courrier mis a jour"
+                "name": "Mis à jour"
             }
         }
     }

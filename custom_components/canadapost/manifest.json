@@ -1,7 +1,7 @@
 {
   "domain": "canadapost",
   "name": "Canada Post My Mail",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "documentation": "https://github.com/Miloud-H/HA-Canada-Post",
   "issue_tracker": "https://github.com/Miloud-H/HA-Canada-Post/issues",
   "codeowners": ["@Miloud-H"],

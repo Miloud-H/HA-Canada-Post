@@ -3,17 +3,17 @@
         "step": {
             "user": {
                 "title": "Canada Post Account",
-                "description": "Enter your Postes Canada mobile app id's.",
+                "description": "Enter your Canada Post mobile app credentials.",
                 "data": {
                     "username": "Username",
                     "password": "Password",
-                    "include_ads": "Include circulars/ads in sensors"
+                    "include_ads": "Include circulars/ads"
                 }
             }
         },
         "error": {
-            "auth_failed": "Failed to authentificate. Check your id.",
-            "cannot_discover_id": "Failed to fetch your unique tracking ID, is My Mail enabled?"
+            "auth_failed": "Failed to authenticate. Check your credentials.",
+            "cannot_discover_id": "Failed to fetch your unique tracking ID. Is 'My Mail' enabled?"
         }
     },
     "options": {
@@ -21,7 +21,7 @@
             "init": {
                 "title": "Canada Post Options",
                 "data": {
-                    "include_ads": "Show circulars/ads in sensors"
+                    "include_ads": "Show circulars/ads"
                 }
             }
         }
@@ -29,13 +29,13 @@
     "entity": {
         "sensor": {
             "transit": {
-                "name": "Canada Post (In transit)"
+                "name": "In transit"
             },
             "delivered": {
-                "name": "Canada Post (Delivered)"
+                "name": "Delivered"
             },
             "mail_updated": {
-                "name": "Mail Updated"
+                "name": "Mail updated"
             }
         }
     }
