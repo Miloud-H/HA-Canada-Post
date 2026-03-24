@@ -32,22 +32,23 @@ async def update_listener(hass, entry):
 
 class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
     _attr_has_entity_name = True
-    _attr_icon = "mdi:mailbox-outline"
 
     def __init__(self, coordinator, topic_id, sensor_type):
         super().__init__(coordinator)
         self._topic_id = topic_id
         self._type = sensor_type
 
-        self._attr_name = None
-
-        self._attr_translation_key = sensor_type        
-        self._attr_unique_id = f"cp_mymail_{topic_id}_{sensor_type}"
-
+        self._attr_device_info = coordinator.device_info
+        
+        self._attr_translation_key = sensor_type
+        self._attr_unique_id = f"cp_mail_{topic_id}_{sensor_type}"
+        
         if sensor_type == "transit":
             self._attr_icon = "mdi:truck-delivery-outline"
         elif sensor_type == "delivered":
             self._attr_icon = "mdi:package-variant-closed-check"
+        else:
+            self._attr_icon = "mdi:mailbox-outline"
 
     def _process_mail(self):
         data = self.coordinator.data
@@ -126,18 +127,13 @@ class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
         return attributes
     
 class CanadaPostUpdatedSensor(CanadaPostMailSensor):    
-    _attr_has_entity_name = True
-    _attr_translation_key = "mail_updated"
-
     def __init__(self, coordinator, topic_id):
-        super().__init__(coordinator, topic_id, "delivered")
-        
-        self._attr_name = None
-        self._attr_translation_key = "mail_updated"
-        self._attr_unique_id = f"{topic_id}_mail_updated"
+        super().__init__(coordinator, topic_id, "mail_updated")        
+        self._type = "delivered"        
+        self._attr_unique_id = f"cp_mail_updated_compat_{topic_id}"
 
     @property
-    def state(self):
+    def native_value(self):
         return len(self._process_mail())
 
     @property

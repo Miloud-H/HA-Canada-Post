@@ -17,7 +17,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     api = CanadaPostAPI(hass, username, password)
     
-    coordinator = CanadaPostUpdateCoordinator(hass, api, topic_id)
+    coordinator = CanadaPostUpdateCoordinator(hass, api, topic_id, entry)
 
     try:
         await coordinator.async_config_entry_first_refresh()
