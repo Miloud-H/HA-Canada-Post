@@ -41,7 +41,7 @@ class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
         self._attr_device_info = coordinator.device_info
         
         self._attr_translation_key = sensor_type
-        self._attr_unique_id = f"cp_mail_{topic_id}_{sensor_type}"
+        self._attr_unique_id = f"cp_v2_{topic_id}_{sensor_type}"
         
         if sensor_type == "transit":
             self._attr_icon = "mdi:truck-delivery-outline"
