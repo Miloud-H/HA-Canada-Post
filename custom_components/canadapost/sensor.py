@@ -78,7 +78,7 @@ class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
                 if is_ad and not include_ads:
                     continue
 
-                if delivery_date <= today:
+                if delivery_date < today:
                     delivered_items.append(piece)
                 else:
                     transit_items.append(piece)
