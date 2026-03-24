@@ -32,6 +32,7 @@ async def update_listener(hass, entry):
 
 class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
     _attr_has_entity_name = True
+    _attr_icon = "mdi:mailbox-outline"
 
     def __init__(self, coordinator, topic_id, sensor_type):
         super().__init__(coordinator)
@@ -40,6 +41,11 @@ class CanadaPostMailSensor(CoordinatorEntity, SensorEntity):
 
         self._attr_translation_key = sensor_type        
         self._attr_unique_id = f"cp_mymail_{topic_id}_{sensor_type}"
+
+        if sensor_type == "transit":
+            self._attr_icon = "mdi:truck-delivery-outline"
+        elif sensor_type == "delivered":
+            self._attr_icon = "mdi:package-variant-closed-check"
 
     def _process_mail(self):
         data = self.coordinator.data
@@ -123,7 +129,7 @@ class CanadaPostUpdatedSensor(CanadaPostMailSensor):
 
     def __init__(self, coordinator, topic_id):
         super().__init__(coordinator, topic_id, "delivered")
-        
+
         self._attr_translation_key = "mail_updated"
         self._attr_unique_id = f"canadapost_mail_updated_{topic_id}"
 
