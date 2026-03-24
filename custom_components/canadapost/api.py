@@ -1,6 +1,6 @@
 import logging
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from ...const import URL_AUTH, URL_GRAPHQL, CLIENT_ID, URL_MAIL
+from .const import URL_AUTH, URL_GRAPHQL, CLIENT_ID, URL_MAIL
 
 _LOGGER = logging.getLogger(__name__)
 
